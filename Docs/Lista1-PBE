@@ -1,0 +1,8 @@
+1. Pedra, Papel e Tesoura
+Faça um programa que leia a jogada de dois jogadores e mostre quem venceu ou se houve empate.
+
+2. Cofre do Tesouro Pirata
+Um jogador deve informar duas chaves secretas (uma palavra e um número).
+Depois, o terminal deve ser “limpo” (ou ignorado, simulando limpeza).
+Em seguida, outro jogador deve tentar abrir o cofre informando a palavra e o número.
+Mostre se o cofre foi aberto ou não.
