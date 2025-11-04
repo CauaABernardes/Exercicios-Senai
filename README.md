@@ -1,3 +1,3 @@
 # Exercicios-Senai
 
-Este repositório bserve para armazernar os exercícios de Programação impostos no SENAI
+Este repositório serve para armazernar os exercícios de Programação impostos no SENAI
