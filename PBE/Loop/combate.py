@@ -13,6 +13,12 @@ def ataqueJogador():
     vida_monstro -= dano
     print(f"Vida atual do Monstro: {vida_monstro}")
 
+    if vida_monstro <= 0:
+        return
+    else:
+        tempo()
+        ataqueMonstro()
+
 def ataqueMonstro():
     global vida_jogador
     print("Monstro ataca jogador, Raw Raw!!!")
@@ -37,8 +43,6 @@ def definirGanhador():
 
 while vida_jogador > 0 and vida_monstro > 0:
     ataqueJogador()
-    tempo()
-    ataqueMonstro()
     tempo()
     rodadas+=1
 

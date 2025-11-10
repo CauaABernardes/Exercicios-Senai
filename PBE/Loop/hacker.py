@@ -2,28 +2,49 @@ import random as rd
 
 tentativas = 0
 
-senha = rd.randint(1000, 9999)
-digitos_senha = [int(digito) for digito in str(senha)]
+def definirSenha():
+    global senha
+    senha = ""
 
-def perguntarSenha():
-    global tentativas
-    while True:
-        digitos_jogador = input("Qual você acha que é a senha: ")
+    for i in range(4):
+        senha += rd.choice("0123456789")
 
-        if not digitos_jogador.isdigit() or len(digitos_jogador) != 4:
-            print("Digite uma senha com 4 números!")
-            continue
+def verificarSenha(senha_hacker):
+    global acertou
+    acertou = False
+    qtd_digitos_corretos = 0
+    
+    if len(senha_hacker) != len(senha):
+        print("A senha deve conter exatamente 4 dígitos numéricos")
+        return
+    
+    for n in range(len(senha)):
+        if senha_hacker[n] == senha[n]:
+            qtd_digitos_corretos += 1
+    
+    print(f"Você acertou {qtd_digitos_corretos} de 4 digitos")
 
-        tentativas += 1
-        digitos_jogador = [int(digito) for digito in digitos_jogador]
+    if qtd_digitos_corretos == 4:
+        acertou = True
 
-        if compararSenhas(digitos_senha, digitos_jogador):
-            print(f"Parabéns! Você acertou a senha {senha} em {tentativas} tentativas!")
+def jogar():
+
+    definirSenha()
+    
+    for i in range(1, 1001):
+        global tentativas
+        tentativas = i
+
+        tentativa_senha = input("Digite qual você acha que é a senha de 4 dígitos: ")
+
+        verificarSenha(tentativa_senha)
+
+        if acertou:
+            print(f"Você acertou a senha: {senha} em {tentativas} tentativas")
             break
+        
+    if tentativas == 1000:
+        print("Você perdeu e gastou todas as sua tentativas!")
+    
 
-def compararSenhas(senha_padrao, senha_jogador):
-    digitos_corretos = sum(1 for d in senha_jogador if d in senha_padrao)
-    print(f"Você acertou {digitos_corretos} de 4 dígitos.")
-    return senha_jogador == senha_padrao
-
-perguntarSenha()
+jogar()
